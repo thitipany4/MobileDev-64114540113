@@ -14,20 +14,36 @@ class UquizController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   var isAdmin = false.obs;
-
   Future<void> authen(String email, String password) async {
-    final res = pb.admins.authWithPassword(email, password);
-    isAdmin = true.obs;
-    if (pb.authStore.isValid) {
-      print('admin logged in: ${email}');
-      Get.to(() => const MemberListPage());
-    } else {
+    try {
+      final res = pb.admins.authWithPassword(email, password);
+      isAdmin = true.obs;
+      print('admin logged in:${email}');
+      if (pb.authStore.isValid) {
+        Get.to(() => const MemberListPage());
+      }
+    } catch (e) {
       final res = pb.collection('users').authWithPassword(email, password);
       isAdmin = false.obs;
+      print('user logged in:${email}');
       if (pb.authStore.isValid) {
-        print('user logged in: ${email}');
         Get.to(() => const Shopping());
       }
     }
   }
 }
+  // Future<void> authen(String email, String password) async {
+  //   final res = pb.admins.authWithPassword(email, password);
+  //   isAdmin = true.obs;
+  //   if (pb.authStore.isValid) {
+  //     print('admin logged in: ${email}');
+  //     Get.to(() => const MemberListPage());
+  //   } else {
+  //     final res = pb.collection('users').authWithPassword(email, password);
+  //     isAdmin = false.obs;
+  //     if (pb.authStore.isValid) {
+  //       print('user logged in: ${email}');
+  //       Get.to(() => const Shopping());
+  //     }
+  //   }
+  // }
