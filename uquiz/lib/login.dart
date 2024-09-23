@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:uquiz/controller.dart';
+import 'package:uquiz/members.dart';
 import 'package:uquiz/shopping.dart';
 
 class LoginPage extends StatefulWidget {
@@ -10,10 +13,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
+  // final emailController = TextEditingController();
+  // final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final ctrl = Get.find<UquizController>();
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -21,11 +26,12 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('Login', style: TextStyle(fontSize: 40))),
+                child: Text('Login', style: TextStyle(fontSize: 20))),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                controller: emailController,
+                obscureText: false,
+                controller: ctrl.emailController,
                 validator: (value) {
                   return null;
                 },
@@ -37,7 +43,17 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('password'),
+              child: TextFormField(
+                obscureText: true,
+                controller: ctrl.passwordController,
+                validator: (value) {
+                  return null;
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -45,15 +61,12 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Perform login logic here
-                    print('email: ${emailController.text}');
-                    // print('password: ${passwordController.text}');
+                    print('email: ${ctrl.emailController.text}');
+                    print('password: ${ctrl.passwordController.text}');
+
                     //Navigator.pop(context);
-                    Navigator.push<void>(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => const Shopping(),
-                      ),
-                    );
+                    ctrl.authen(ctrl.emailController.text,
+                        ctrl.passwordController.text);
                   }
                 },
                 child: const Text('Submit'),
@@ -61,6 +74,15 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void to(BuildContext context, Widget page) {
+    Navigator.push<void>(
+      context,
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => page,
       ),
     );
   }
