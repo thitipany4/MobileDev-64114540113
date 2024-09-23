@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:uquiz/login.dart';
-import 'package:uquiz/member.dart';
+import 'package:uquiz/members.dart';
 
 // import 'home.dart';
-import 'shopping.dart';
+// import 'shopping.dart';
+import 'login.dart';
 
 class UQuizApp extends StatefulWidget {
   const UQuizApp({super.key});
@@ -18,6 +18,7 @@ class _UQuizAppState extends State<UQuizApp> {
     return const MaterialApp(
       title: 'UQuiz App',
       // home: Home(),
+      // home: MemberListPage(), //Shopping(),
       home: LoginPage(),
     );
   }

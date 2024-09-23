@@ -9,34 +9,56 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final emailControllter = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
-
+        key: _formKey,
         child: Column(
           children: [
-            const Padding(padding: EdgeInsets.all(8.0), child: Text("Login")),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Login', style: TextStyle(fontSize: 40))),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                controller: emailControllter,
-                // validator: (value),
+                controller: emailController,
+                validator: (value) {
+                  return null;
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                ),
               ),
             ),
-            const Text("password"),
-            Padding(padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                Navigator.push<void>((context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext)) => const Shopping(),
-                 
-                ) as BuildContext,);
-              }
-            }, child: const Text('Submit')),
-            )
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('password'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    // Perform login logic here
+                    print('email: ${emailController.text}');
+                    // print('password: ${passwordController.text}');
+                    //Navigator.pop(context);
+                    Navigator.push<void>(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => const Shopping(),
+                      ),
+                    );
+                  }
+                },
+                child: const Text('Submit'),
+              ),
+            ),
           ],
         ),
       ),

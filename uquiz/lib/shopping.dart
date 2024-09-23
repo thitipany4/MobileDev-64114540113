@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
-import 'package:uquiz/home.dart';
+import 'home.dart';
 
 class Shopping extends StatefulWidget {
   const Shopping({super.key});

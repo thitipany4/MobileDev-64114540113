@@ -14,15 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-## start pocketbase server
-pocketbase serve
-# htttp://127.0.0.1/_/ #admin
-# pocketbase serve
-# gmail : admin@gmail.com
-# password : admin@dssi
-
-# create user
-# email = anna@ubu.ac.th
-# password = anna@dssi
-# name = Anna Dssi
