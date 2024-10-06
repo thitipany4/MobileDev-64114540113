@@ -25,8 +25,9 @@ void main() async {
       'username': data['login']['username'],
       'email': data['email'],
       'picture': data['picture']['large'],
-      'first': data['name']['first'],
-      'last': data['name']['last']
+      'first_name': data['name']['first'],
+      'last_name': data['name']['last'],
+      'passwords':'membertest',
     });
   }
 }

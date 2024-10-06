@@ -1,4 +1,32 @@
-import 'dart:math';
+class User {
+  final String id;
+  final String email;
+  final String username;
+
+  User({
+    required this.id,
+    required this.email,
+    required this.username,
+  });
+
+  // Factory method to create a User from JSON
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'] as String,
+      email: json['email'] as String,
+      username: json['username'] as String,
+    );
+  }
+  
+  // Method to return JSON representation of the user
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'email': email,
+      'username': username,
+    };
+  }
+}
 
 class Member {
   String username;

@@ -23,3 +23,8 @@ mobile dev final project for mobile development course DSSI
     # password= anna@dssi
     # name= Anna DSSI
 
+# pub tool
+    # https://pub.dev/
+    # update flutter pub add update
+# how to run dart 
+    # dart run lib/cli.dart
