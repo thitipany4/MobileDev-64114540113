@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:uquiz/controller.dart';
+import 'package:uquiz/updatecontroller.dart';
 import 'package:uquiz/members.dart';
+import 'package:uquiz/shopping.dart';
 
 // import 'home.dart';
 // import 'shopping.dart';
@@ -13,7 +15,8 @@ class UQuizBindings implements Bindings {
   void dependencies() {
     // Get.put(UquizController());
     Get.lazyPut(() =>
-        UquizController()); // lazyput คือยังไม่สร้างทางไปจะเปิดไปหน้าไหน ต้องเรียกใช้งานก่อนถึงสร้างความเร็วในการเปิดแอพ
+        UquizController(),); // lazyput คือยังไม่สร้างทางไปจะเปิดไปหน้าไหน ต้องเรียกใช้งานก่อนถึงสร้างความเร็วในการเปิดแอพ
+       
   }
 }
 

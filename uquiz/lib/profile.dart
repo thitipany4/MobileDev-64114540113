@@ -17,6 +17,10 @@ class _ProfilePageState extends State<ProfilePage> {
     var token = uquizController.token.value;
     var email = uquizController.email.value;
     var username = uquizController.username.value;
+    print('username $username');
+    print('email $email');
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
