@@ -116,6 +116,8 @@ class UquizController extends GetxController {
         var user = members.items[0];
         String usernameValue = user.getStringValue('username') ?? 'No username';
         String emailValue = user.getStringValue('email') ?? 'No email';
+        String useravatar = user.getStringValue('avatar') ?? '';
+        print('useravatar$useravatar');
         setToken(pbToken, usernameValue, emailValue);
         Get.to(() => const Shopping());
       } else {
@@ -271,6 +273,30 @@ class UquizController extends GetxController {
       }
     } else {
       print('admin edit failed:');
+    }
+  }
+  Future<void> addproduct(String name, String price, String quantity ,String description, String image) async {
+    if (name.isNotEmpty && price.isNotEmpty && quantity.isNotEmpty && description.isNotEmpty && image.isNotEmpty ) {
+      try {
+        final body = <String, dynamic>{
+          'name': name,
+          'price': price,
+          'quantity': quantity,
+          'description': description,
+          'image': image,
+        };
+        final record = await pb.collection('products').create(body: body);
+        print('Record created: $record');
+        Get.offAll(() => const Product());
+
+
+      } catch (e) {
+        // จัดการข้อผิดพลาดที่เกิดขึ้นระหว่างการลงทะเบียน
+        print('Registration failed: $e');
+      Get.snackbar('Add Product Failed', 'You fill data Incorrect or You dont fill all field.');
+      }
+    } else {
+      print('Please fill in all fields correctly.');
     }
   }
 }

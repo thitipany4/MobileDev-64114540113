@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:uquiz/app_product.dart';
 import 'package:uquiz/profile.dart';
 import 'package:uquiz/shopping.dart';
 import 'package:uquiz/controller.dart';
@@ -74,7 +75,7 @@ class _ProductState extends State<Product> {
                           label: const Text('Create New Product'),
                           onPressed: () {
                             // Open dialog or navigate to product creation form
-                            print('add new product');
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => AddProduct()));
                           },
                         ),
                       ),
